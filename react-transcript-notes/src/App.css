@@ -1,0 +1,712 @@
+/* Root variables for consistent theming - Monochrome palette */
+:root {
+  --primary-dark: #121212;
+  --secondary-dark: #1e1e1e;
+  --card-bg: #242424;
+  --accent-color: #444444;
+  --accent-hover: #666666;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --border-color: #333333;
+  --button-color: #2a2a2a;
+  --button-hover: #444444;
+  --success-color: #666666;
+  --success-hover: #777777;
+  --info-color: #444444;
+  --info-hover: #555555;
+  --highlight-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  background-color: var(--primary-dark);
+  color: var(--text-primary);
+  font-family: "Inter", "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Responsive base font size */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+.App {
+  text-align: center;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  background-color: var(--secondary-dark);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.App-header {
+  background-color: var(--card-bg);
+  padding: 1.25rem;
+  color: white;
+  margin-bottom: 1.25rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.App-header h1 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+/* Minimal button design with monochrome styling */
+button {
+  padding: 0.625rem 1.125rem;
+  margin: 0.3125rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--button-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  text-transform: none;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  white-space: nowrap;
+  min-height: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background-color: #2a2a2a;
+  color: #666666;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.button-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Responsive button layout for small screens */
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button,
+  .file-label {
+    margin: 0.25rem 0;
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+.notes-area {
+  width: 95%;
+  height: 400px;
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-top: 1.25rem;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  resize: vertical;
+  background-color: var(--card-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Adjust height for smaller screens */
+@media (max-width: 768px) {
+  .notes-area,
+  .markdown-content {
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notes-area,
+  .markdown-content {
+    height: 300px;
+  }
+}
+
+.timer {
+  padding: 0.625rem;
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.1em;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  /* Make identical to button styling */
+  padding: 0.625rem 0rem;
+  margin: 0.3125rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--button-color);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  text-transform: none;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  white-space: nowrap;
+  min-height: 2.5rem;
+  flex: 1 1 auto;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.file-label:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.file-label:active {
+  transform: translateY(0);
+}
+
+/* Enhanced Markdown styling with improved contrast */
+.markdown-content {
+  text-align: left;
+  padding: 1.5625rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--card-bg);
+  margin-bottom: 1.25rem;
+  max-height: 600px;
+  overflow-y: auto;
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography improvements with responsive sizing - monochrome styling */
+.markdown-content h1 {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.markdown-content h2 {
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.3em;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.markdown-content h3 {
+  font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Paragraphs and spacing - improved contrast */
+.markdown-content p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* Lists */
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.markdown-content li {
+  margin-bottom: 0.375rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.markdown-content li > p {
+  margin-top: 1rem;
+}
+
+/* Blockquotes - monochrome styling */
+.markdown-content blockquote {
+  padding: 0 1em;
+  color: var(--text-secondary);
+  border-left: 3px solid #666666;
+  margin: 0 0 1rem 0;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 0 3px 3px 0;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* Code blocks - monochrome styling */
+.markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono",
+    monospace;
+  font-size: clamp(0.7rem, 2.3vw, 0.85rem);
+  line-height: 1.45;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+}
+
+.markdown-content code {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono",
+    monospace;
+  font-size: clamp(0.7rem, 2.3vw, 0.85rem);
+  color: #e0e0e0;
+}
+
+/* Tables - make them responsive */
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.markdown-content table th,
+.markdown-content table td {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.8125rem;
+}
+
+.markdown-content table tr {
+  background-color: var(--card-bg);
+}
+
+.markdown-content table tr:nth-child(2n) {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Horizontal rule */
+.markdown-content hr {
+  height: 1px;
+  padding: 0;
+  margin: 1.5rem 0;
+  background-color: var(--border-color);
+  border: 0;
+}
+
+/* Images */
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  filter: grayscale(100%);
+}
+
+/* Raw markdown */
+.raw-markdown {
+  width: 100%;
+  height: 300px;
+  margin-top: 1.25rem;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-secondary);
+  resize: vertical;
+}
+
+@media (max-width: 480px) {
+  .raw-markdown {
+    height: 200px;
+    font-size: 0.75rem;
+  }
+}
+
+/* Details/summary component */
+details {
+  margin-top: 1.25rem;
+  border: 1px solid var(--border-color);
+  padding: 0.9375rem;
+  border-radius: 4px;
+  background-color: var(--card-bg);
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 0.625rem;
+  user-select: none;
+  color: var(--text-primary);
+  padding: 0.5rem 0;
+}
+
+details summary:hover {
+  color: white;
+}
+
+/* Touch-friendly element spacing for mobile */
+@media (max-width: 768px) {
+  button,
+  .file-label,
+  details summary {
+    /* Make touch targets bigger for mobile */
+    min-height: 44px;
+    line-height: 1.2;
+  }
+
+  /* Add more space between interactive elements */
+  .markdown-content li {
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Sound wave visualization styling - monochrome */
+.sound-wave {
+  margin: 0.9375rem 0;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Override any problematic ReactMic inline styles */
+.sound-wave > div {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure canvas displays properly */
+.sound-wave canvas {
+  width: 100% !important;
+  height: 100px !important;
+  border-radius: 6px !important;
+  display: block !important;
+  filter: grayscale(100%) !important;
+}
+
+/* Sound wave placeholder remains the same */
+.sound-wave-placeholder {
+  padding: 1.25rem;
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  margin: 0.9375rem 0;
+  color: var(--text-secondary);
+  border: 1px dashed var(--border-color);
+}
+
+/* Processing indicator */
+.processing-indicator {
+  margin-top: 0.625rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+.processing-indicator:after {
+  content: " .";
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: " .";
+  }
+  40% {
+    content: " ..";
+  }
+  60% {
+    content: " ...";
+  }
+  80%,
+  100% {
+    content: "";
+  }
+}
+
+/* Interim transcript styling */
+.interim-transcript {
+  padding: 0.625rem;
+  margin: 0.625rem 0;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.recorded-transcript {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  max-height: 60px;
+  overflow-y: auto;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Notes display title */
+.notes-display h3 {
+  color: var(--text-primary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.9375rem;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+}
+
+/* Fix buttons and inputs on iOS */
+@supports (-webkit-touch-callout: none) {
+  button,
+  .file-label,
+  input,
+  textarea {
+    /* Fix iOS text size adjust */
+    font-size: 16px;
+  }
+}
+
+/* Orientation changes */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .App {
+    padding: 0.75rem;
+  }
+
+  .App-header {
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content {
+    max-height: 300px;
+  }
+}
+
+/* Audio Visualizer styling - monochrome */
+.sound-wave-container {
+  width: 100%;
+  margin: 0.9375rem 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
+}
+
+.visualizer-canvas {
+  display: block;
+  width: 100%;
+  height: 100px;
+  background-color: #121212;
+  border-radius: 6px;
+  filter: grayscale(100%);
+}
+
+/* Debug info display */
+.debug-info {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  padding: 5px;
+  margin: 5px 0;
+  background-color: var(--card-bg);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+/* Notes editor enhancements for Notion-like feel */
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.notes-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.toggle-edit-btn {
+  padding: 0.3rem 0.8rem;
+  background-color: var(--button-color);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+  min-height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.toggle-edit-btn:hover {
+  background-color: var(--button-hover);
+}
+
+.notes-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.formatting-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  background-color: var(--card-bg);
+  padding: 0.5rem;
+  border-radius: 4px 4px 0 0;
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+}
+
+.format-button {
+  min-height: auto;
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--button-color);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.format-button:hover {
+  background-color: var(--button-hover);
+  transform: translateY(-1px);
+}
+
+.notes-edit-area {
+  width: 100%;
+  min-height: 400px;
+  padding: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 4px 4px;
+  resize: vertical;
+  outline: none;
+}
+
+.notes-edit-area:focus {
+  border-color: #666666;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive adjustments for the toolbar */
+@media (max-width: 600px) {
+  .formatting-toolbar {
+    gap: 0.15rem;
+    padding: 0.3rem;
+  }
+
+  .format-button {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Add styling for recording info message */
+.recording-info {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+  font-style: italic;
+  text-align: center;
+}
